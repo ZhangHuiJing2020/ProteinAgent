@@ -13,7 +13,7 @@
 ## Run
 
 ```bash
-python main.py              # 全流程：下载→处理→训练→演示→对比→图表
+python main.py              # 全流程
 python main.py train        # 仅训练
 python main.py demo         # Agent演示
 python main.py compare      # 对比实验
@@ -45,20 +45,7 @@ ProteinGym 的 GB1 数据集（Olson et al. 2014, eLife）
 
 ---
 
-## Fitness prediction model
-
-### features
-
-每个突变编码为 2659 维特征向量：
-
-| 特征 | 维度 | 说明 |
-|------|------|------|
-| BLOSUM62 | 448 | 每个位置的替换得分 |
-| One-hot | 580 | 29位点×20氨基酸 |
-| 理化性质 | 6 | 疏水性/电荷/大小/极性/保守性/异常 |
-| 位点交互 | 1625 | 突变数+406对位点的4种交互信号 |
-
-### Model
+## Model
 
 - RandomForest（500棵树, max_depth=10）
 - XGBoost（500棵树, max_depth=5）
@@ -66,13 +53,6 @@ ProteinGym 的 GB1 数据集（Olson et al. 2014, eLife）
 - Ridge（线性基线）
 - 元模型：RidgeCV
 
-### Performance
-
-| 指标 | Train | Val | Test | CV(5-fold) |
-|------|-------|-----|------|-----------|
-| Spearman | 0.922 | 0.873 | **0.845** | 0.863±0.019 |
-| Top-10 Hit | 0.300 | 0.600 | 0.400 | - |
-| NDCG@10 | 0.805 | 0.742 | 0.757 | - |
 
 ---
 
@@ -129,5 +109,5 @@ ProteinGym 的 GB1 数据集（Olson et al. 2014, eLife）
 - [EvolvePro](https://github.com/mat10d/EvolvePro) ([bioRxiv 2024](https://www.biorxiv.org/content/10.1101/2024.07.17.604015v1))
 - [ProteinGym](https://github.com/OATML-Markslab/ProteinGym) ([NeurIPS 2023](https://proceedings.neurips.cc/paper_files/paper/2023/file/cac723e5ff29f65e3fcbb0739ae91bee-Paper-Datasets_and_Benchmarks.pdf))
 - [ESM](https://github.com/facebookresearch/esm) ([Science 2023](https://www.science.org/doi/10.1126/science.ade2574))
-- [ProtAgents](https://github.com/lamm-mit/ProtAgents) ([arXiv 2024]([https://arxiv.org/abs/2402.04268](https://arxiv.org/abs/2402.04268)))
+- [ProtAgents](https://github.com/lamm-mit/ProtAgents) ([arXiv 2024](https://arxiv.org/abs/2402.04268))
 
